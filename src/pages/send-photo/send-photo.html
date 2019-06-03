@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center class="oleo-script">Nakagram</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="auto-scroll">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <ion-card>
+      <ion-slides (ionSlideDidChange)="changeFilter(slides)" #slides>
+        <ion-slide *ngFor="let filter of filters" text-center>
+          <img [src]="photo" alt="" [class]="filter" style="width: 100%">
+          <small class="ion-padding">{{selectedFilter}}</small>
+        </ion-slide>
+      </ion-slides>
+      <ion-card-content>
+        <ion-list no-lines>
+          <ion-item>
+            <ion-input type="text" placeholder="Título" maxlength="40" formControlName="title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea placeholder="Mensagem" rows="3" maxlength="255" formControlName="message"></ion-textarea>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button  type="button" ion-button clear small color="danger" icon-start *ngIf="location == ''" (click)="getLocation()"><ion-icon name='pin'></ion-icon> Ativar Localização</button>
+          <button type="button" ion-button clear small color="danger" icon-start *ngIf="location != ''"><ion-icon name='pin'></ion-icon> {{ location }}</button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <div padding>
+      <button type="submit" [disabled]="form.invalid" ion-button block large outline>Enviar</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,15 @@
+{
+  "name": "nakagram",
+  "short_name": "nakagram",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [{
+    "src": "assets/imgs/logo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#3897f0",
+  "theme_color": "#3897f0"
+}
